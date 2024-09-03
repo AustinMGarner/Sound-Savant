@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Note Player</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <script>
@@ -49,11 +50,17 @@
         // Create a button element
         const button = document.createElement("button");
 
+        const button2 = document.createElement("button"); 
+
         // Set the button text
         button.textContent = "Play Random Note";
 
+        button2.textContent = "Play 2 Random Notes";
+
         // Append the button to the body
         document.body.appendChild(button);
+
+        document.body.appendChild(button2);
 
         // Add an event listener to play a random note when clicked
         button.addEventListener("click", function() {
@@ -70,6 +77,27 @@
             // Play the corresponding sound
             noteSounds[randomNote].play().catch(e => console.error('Error playing audio:', e));
 
+            console.log("played note");     
+        });
+        
+           // Add an event listener to play a random note when clicked
+           button2.addEventListener("click", function() {
+            console.log("The button was pressed");
+
+            // Generate a random index to pick a note
+            const randomIndex1 = Math.floor(Math.random() * notes.length);
+            const randomIndex2 = Math.floor(Math.random() * notes.length);
+
+            // Get the corresponding note
+            const randomNote1 = notes[randomIndex1];
+            const randomNote2 = notes[randomIndex2];
+
+            console.log("The sound is: " + randomNote1);
+            console.log("The sound is: " + randomNote2);
+
+            // Play the corresponding sound
+            noteSounds[randomNote1].play().catch(e => console.error('Error playing audio:', e));
+            noteSounds[randomNote2].play().catch(e => console.error('Error playing audio:', e));
             console.log("played note");     
         });
 
